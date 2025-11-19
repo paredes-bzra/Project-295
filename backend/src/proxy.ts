@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server'
 
 export async function proxy() {
+  // handle preflighted requests
   const res = NextResponse.next();
-  // TODO: Add CORS middleware logic here.
+  res.headers.append('Access-Control-Allow-Origin', '*');
+  res.headers.append('Access-Control-Allow-Methods', '*');
+  res.headers.append('Access-Control-Allow-Headers', '*');
   return res;
 }
 

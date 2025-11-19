@@ -1,20 +1,64 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/styles/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frontend - Vorlage</title>
-    <script type="module" src="/src/main.ts"></script>
-  </head>
-  <body>
-    <h1>TypeScript-Vorlage</h1>
-    <p>Siehe TypeScript-File Source unter <code>/src/main.ts</code>.</p>
-    <p>Die Kompilation des TS-Codes in JavaScript erfolgt in der <code>WebNative</code> Extension &gt; <code>Build</code> oder alternativ über die Konsole mittels <code>npm run build</code> im Root-Ordner (oberste Ebene, wo das <code>package.json</code> File liegt). Das kompilierte (übersetzte) JavaScript File ist im Anschluss unter scripts <code>/dist/assets/index-[XYZ].js</code> verfügbar.</p>
-    <p>Der Live Reload (automatische Aktualisierung, sobald das <code>main.ts</code> ändert) kann in der <code>WebNative</code> Extension gestartet werden.</p>
+    <title>Samuel's Kleiderverleih</title>
 
-    <h2>Fügen Sie hier Ihren HTML-Code ein. Verändern Sie nur den <code>&lt;body&gt;</code>-Tag im <code>index.html</code> File.</h2>
-    <small><a href="./pages/impressum.html">Impressum</a></small>
-  </body>
-</html>
+    <!-- Stylesheet (behalte deinen Pfad wenn dein Server es so erwartet) -->
+    <link rel="stylesheet" type="text/css" href="/styles/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  </head>
+  <body class="main-content">
+
+    <header>
+      <div class="account-menu-container">
+        <h1>Samuel's Kleiderverleih</h1>
+        <ul class="account-menu">
+          <li><a href="pages/login.html">Login</a></li>
+          <li><a href="pages/register.html">Register</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <nav>
+      <ul class="todos-nav" id="left-nav">
+        <!-- Sidebar-Inhalte bleiben unverändert -->
+      </ul>
+    </nav>
+
+   <main>
+  <!-- create-button -->
+  <aside class="button-overlay">
+    <button id="create-button" class="create-button"><div>+</div></button>
+  </aside>
+
+  <!-- Container für Produkte (wichtig für JS) -->
+  <div id="product-list" class="image-4-grid"></div>
+</main>
+
+<!-- Script am Ende des Bodys -->
+<script>
+async function loadProducts() {
+    const response = await fetch('http://localhost:3000/api/products');
+    const products = await response.json();
+
+    const container = document.getElementById('product-list');
+    container.innerHTML = '';
+
+    products.forEach(p => {
+        const card = document.createElement('div');
+        card.classList.add('product-card');
+        card.innerHTML = `
+            <img src="${p.image}" alt="${p.name}">
+            <h3>${p.name}</h3>
+            <p class="price">CHF ${p.price.toFixed(2)}</p>
+        `;
+        container.appendChild(card);
+    });
+}
+
+loadProducts();
+</script>
+
+<footer>Copyright &copy; BWZ-Rappi</footer>
