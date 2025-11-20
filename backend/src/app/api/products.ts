@@ -16,7 +16,7 @@ const products: Product[] = [
   { id: 4, name: "Louis Vuitton Schuhe", price: 799, image: "/images/schuhe.jpg", type: "shoes" }
 ];
 
-// Route liefert alle Produkte
+
 router.get('/products', (req: Request, res: Response) => {
   res.json(products);
 });

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <script type="module" src="/src/views/register.ts" defer></script>
+    <title>Notes App - Registration</title>
+</head>
+<body class="main-content">
+    <header>
+        <div class="account-menu-container">
+            <h1><a href="http://localhost:8100">𝑹𝒆𝒈𝒊𝒔𝒕𝒆𝒓</a></h1>
+            <ul class="account-menu">
+                <li><a href="./login.html">Login</a></li>
+            </ul>
+        </div>
+    </header>
+    <nav>
+        <h2 class="left-nav">Registration</h2>
+    </nav>
+    <main>
+        <form class="view">
+            <label>
+                <span>E-Mail: </span>
+                <input type="email" id="register-email" required>
+            </label>
+            <label>
+                <span>Password: </span>
+                <input type="password" id="register-password" autocomplete="new-password" required>
+            </label>
+            <label>
+                <span>Password Confirm: </span>
+                <input type="password" id="register-password-confirm" autocomplete="new-password" required>
+            </label>
+            <button type="submit">Register</button>
+            <div id="register-error"></div>
+        </form>
+    </main>
+    <footer>Copyright &copy; BWZ-Rappi</footer> 
+</body>
+</html>

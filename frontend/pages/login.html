@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <script type="module" src="/src/views/login.ts" defer></script>
+    <title>Notes App - Login</title>
+</head>
+<body class="main-content">
+    <header>
+        <div class="account-menu-container">
+           <!-- login.html -->
+<h1><a href="http://localhost:8100">𝑳𝒐𝒈𝒊𝒏</a></h1>
+
+            <ul class="account-menu">
+                <li><a href="./register.html">Register</a></li>
+            </ul>
+        </div>
+    </header>
+    <nav>
+        <h2 class="left-nav">Login</h2>
+    </nav>
+    <main>
+        <form class="view">
+            <label>
+                <span>E-Mail: </span>
+                <input type="email" id="login-email" required>
+            </label>
+            <label>
+                <span>Password: </span>
+                <input type="password" id="login-password" autocomplete="current-password" required>
+            </label>
+            <button type="submit">Login</button>
+            <div id="login-error"></div>
+        </form>
+    </main>
+    <footer>Copyright &copy; BWZ-Rappi</footer> 
+</body>
+</html>

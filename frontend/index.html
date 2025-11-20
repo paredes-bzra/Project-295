@@ -5,60 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Samuel's Kleiderverleih</title>
 
-    <!-- Stylesheet (behalte deinen Pfad wenn dein Server es so erwartet) -->
+    <!-- Stylesheet -->
     <link rel="stylesheet" type="text/css" href="/styles/main.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
-  </head>
-  <body class="main-content">
 
-    <header>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="main-content">
+    <!-- Header -->
+    <header class="site-header">
       <div class="account-menu-container">
-        <h1>Samuel's Kleiderverleih</h1>
+        <h1>𝓢𝓪𝓶𝓾𝓮𝓵'𝓼 𝑲𝒍𝒆𝒊𝒅𝒆𝒓𝒗𝒆𝒓𝒌𝒂𝒖𝒇</h1>
         <ul class="account-menu">
           <li><a href="pages/login.html">Login</a></li>
           <li><a href="pages/register.html">Register</a></li>
         </ul>
       </div>
+
+      <!-- Musterbild -->
+      <img src="/images/muster.jpg" class="header-muster" alt="Muster">
     </header>
 
+    <!-- Sidebar Navigation -->
     <nav>
       <ul class="todos-nav" id="left-nav">
-        <!-- Sidebar-Inhalte bleiben unverändert -->
+        <li><h1>𝑪𝒂𝒕𝒆𝒈𝒐𝒓𝒊𝒆𝒔</h1></li>
+        <li>Schuhe</li>
+        <li>Hosen</li>
+        <li>Pullover</li>
+        <li>Accessoires</li>
       </ul>
     </nav>
 
-   <main>
-  <!-- create-button -->
-  <aside class="button-overlay">
-    <button id="create-button" class="create-button"><div>+</div></button>
-  </aside>
+    <!-- Hauptbereich -->
+    <main>
+      <!-- Erstellen-Button -->
+      <aside class="button-overlay">
+        <button id="create-button" class="create-button"><div>+</div></button>
+      </aside>
 
-  <!-- Container für Produkte (wichtig für JS) -->
-  <div id="product-list" class="image-4-grid"></div>
-</main>
+      <!-- 2x2 Bild-Galerie -->
+      <article id="details-view" class="view">
+        <div class="image-4-grid product-grid">
 
-<!-- Script am Ende des Bodys -->
-<script>
-async function loadProducts() {
-    const response = await fetch('http://localhost:3000/api/products');
-    const products = await response.json();
+          <div class="product-card">
+            <img src="/images/jeans.jpg" alt="Flared Jeans">
+            <h3 class="product-title">Flared Jeans</h3>
+            <p class="price">CHF 39.00</p>
+          </div>
 
-    const container = document.getElementById('product-list');
-    container.innerHTML = '';
+          <div class="product-card">
+            <img src="/images/muetze.jpg" alt="Ralph Lauren Mütze">
+            <h3 class="product-title">Ralph Lauren Mütze</h3>
+            <p class="price">CHF 29.00</p>
+          </div>
 
-    products.forEach(p => {
-        const card = document.createElement('div');
-        card.classList.add('product-card');
-        card.innerHTML = `
-            <img src="${p.image}" alt="${p.name}">
-            <h3>${p.name}</h3>
-            <p class="price">CHF ${p.price.toFixed(2)}</p>
-        `;
-        container.appendChild(card);
-    });
-}
+          <div class="product-card">
+            <img src="/images/pullover.jpg" alt="Ami Paris Pullover">
+            <h3 class="product-title">Ami Paris Pullover</h3>
+            <p class="price">CHF 49.00</p>
+          </div>
 
-loadProducts();
-</script>
+          <div class="product-card">
+            <img src="/images/schuhe.jpg" alt="asics Schuhe">
+            <h3 class="product-title">asics Schuhe</h3>
+            <p class="price">CHF 59.00</p>
+          </div>
 
-<footer>Copyright &copy; BWZ-Rappi</footer>
+        </div>
+      </article>
+
+<img src="/images/Hose.jpg" alt="Hosebild" class="right">
+<img src="/images/schuhbild.jpg" alt="Schuhbild" class="left">
+
+
+
+
+      <!-- Platz für Edit-View -->
+      <article id="edit-view" class="inactive-view"></article>
+    </main>
+
+
+    <!-- Footer -->
+    <footer>Copyright &copy; BWZ-Rappi</footer>
+  </body>
+</html>
