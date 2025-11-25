@@ -514,6 +514,153 @@ header {
 }
 
 
+/* Container für das Menü oben rechts */
+.account-menu {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Button-Grundgestaltung */
+.account-menu a {
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  display: inline-block;
+  color: #ffffff; /* Text ist jetzt sicher weiß */
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1; /* Text bleibt oben */
+}
+
+/* Hover-Effekt */
+.account-menu a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Bewegter Glanz hinter dem Text */
+.account-menu a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 0; /* hinter Text, damit Text sichtbar bleibt */
+}
+
+.account-menu a:hover::before {
+  animation: shine 1s forwards;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+/* Unterschiedliche Farben für Register */
+.account-menu a.register {
+  background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+
+/* Responsive Anpassung */
+@media (max-width: 600px) {
+  .account-menu {
+    flex-direction: column;
+    top: 10px;
+    right: 10px;
+  }
+
+  .account-menu a {
+    width: 120px;
+    text-align: center;
+  }
+}
+
+
+.account-menu a,
+.account-menu a:link,
+.account-menu a:visited {
+  color: #ffffff; /* Text immer weiß */
+  text-decoration: none; /* keine Unterstreichung */
+}
+
+/* Rest wie vorher */
+.account-menu a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.like-button {
+  background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.like-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.like-count {
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.liked-users {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+
+.like-button {
+  position: absolute;
+  top: 50%;       /* mittig vertikal */
+  left: 180px;     /* links vom Bild */
+  transform: translateY(-50%); /* vertikal zentrieren */
+  background-color: rgba(255, 255, 255, 0.8); /* halbtransparent für besseren Kontrast */
+  border: 1px solid #ff0000;
+  border-radius: 50%;
+  color: #ff0000;
+  cursor: pointer;
+  padding: 8px 10px;
+  font-size: 16px;
+  transition: 0.2s all;
+}
+
+.like-button:hover {
+  background-color: #ff0000;
+  color: white;
+}
+
+.like-button.liked {
+  background-color: #ff0000;
+  color: white;
+}
+
 
 
 
