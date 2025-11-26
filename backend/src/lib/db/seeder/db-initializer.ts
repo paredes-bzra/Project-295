@@ -4,10 +4,12 @@
 import bcrypt from 'bcryptjs'
 import { initializeNoteDb, noteDb } from '../schema/note'
 import { initializeUserDb, userDb } from '../schema/user'
+import { initializeLikesDb, likesDb } from '../schema/likes'
 
 export async function intializeData() {
   await initializeNoteDb()
   await initializeUserDb()
+  await initializeLikesDb()
 
   const dbEmpty = (await noteDb().countAsync({ }) === 0)
 

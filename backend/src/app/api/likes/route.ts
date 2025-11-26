@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { Like, likeDb } from "@/lib/db/schema/likes"; // Neues Schema für Likes
+import { Likes, likesDb } from "@/lib/db/schema/likes"; 
 import { getJwtHeader } from "@/lib/jwt-auth";
 import { verifyToken } from "@/lib/jwt/jwt-generator";
 
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     return Response.json({ message: "Unauthorized" }, { status: 401 });
   }
 
-  const likesInDb = await likeDb().findAsync({});
+  const likesInDb = await likesDb().findAsync({});
   return Response.json(likesInDb);
 }
 
@@ -29,17 +29,18 @@ export async function POST(request: NextRequest) {
     return Response.json({ message: "Unauthorized" }, { status: 401 });
   }
 
-  const { data, success } = Like.safeParse(await request.json());
+  const json = await request.json();
+  const { data, success } = Likes.safeParse(json);
   if (!success) {
     return Response.json({ message: "Invalid object format." }, { status: 400 });
   }
 
   // Optional: prüfen, ob der User das Produkt schon geliked hat
-  const existing = await likeDb().findOneAsync({ _userId, produkt_id: data.produkt_id });
+  const existing = await likesDb().findOneAsync({ _userId, produkt_id: data._id });
   if (existing) {
     return Response.json({ message: "Already liked" }, { status: 400 });
   }
 
-  const likeWithId = await likeDb().insertAsync({ ...data, _userId });
+  const likeWithId = await likesDb().insertAsync({ ...data, _userId });
   return Response.json(likeWithId, { status: 201 });
 }

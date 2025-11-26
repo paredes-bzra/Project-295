@@ -6,6 +6,7 @@ import { Note, noteDb } from "@/lib/db/schema/note"
 import { getJwtHeader } from "@/lib/jwt-auth"
 import { verifyToken } from "@/lib/jwt/jwt-generator"
 
+
 /**
  * GET: api/notes
  * 
