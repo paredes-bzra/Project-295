@@ -1,6 +1,6 @@
 
 export const environment = {
-    apiRoot: 'http://localhost:3000/api'
+    apiRoot: 'https://project-295-backend.vercel.app/api'
 };
 
 async function postToUserEndpoint(endpoint: string, email: string, password: string) {
